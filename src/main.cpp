@@ -1,4 +1,5 @@
 #include <bn_core.h>
+#include <bn_backdrop.h>
 #include <bn_display.h>
 #include <bn_log.h>
 #include <bn_keypad.h>
@@ -43,6 +44,7 @@ static constexpr bn::fixed PLAYER_X = 900;
 int main()
 {
     bn::core::init();
+    bn::backdrop::set_color(bn::color(15,0,31));
 
     bn::random rng = bn::random();
 
