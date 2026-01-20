@@ -35,11 +35,8 @@ static constexpr int SCORE_X = 70;
 static constexpr int SCORE_Y = -70;
 
 // Player location
-static constexpr bn::fixed PLAYER_Y = 900;
-static constexpr bn::fixed PLAYER_X = 900;
-
-
-
+static constexpr bn::fixed PLAYER_Y = 40;
+static constexpr bn::fixed PLAYER_X = 40;
 
 int main()
 {
