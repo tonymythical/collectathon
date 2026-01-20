@@ -9,6 +9,7 @@ going up is negative, going down is positive.
 
 everything seemed logical and understandable, although i may not know exact syntax, i can roughly tell what specific lines aim to accomplish, the logic is similar to that of Java
 
+I found all the functions to be understandable and sensical. I got to understand some familiar functions that got to make the game run and also give me some ideas.
 
 ## Planning required changes
 
