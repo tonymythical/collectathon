@@ -17,6 +17,11 @@ I found all the functions to be understandable and sensical. I got to understand
 ## Planning required changes
 Change speed, backdrop color, starting position, game restarts after hitting start, player loops like pacman, make a speed boost function.
 
+Change the speed of the player
+Change background color
+Change the starting position of the player and dot, making new constexpr for starting X and Y of each 
+make it so when the player hits start, the page restarts( the player and treasure are sent back to their initial positions and the score resets to 0)
+
 
 ## Brainstorming game ideas
 
