@@ -1,4 +1,5 @@
 #include <bn_core.h>
+#include <bn_backdrop.h>
 #include <bn_display.h>
 #include <bn_log.h>
 #include <bn_keypad.h>
@@ -36,6 +37,7 @@ static constexpr int SCORE_Y = -70;
 int main()
 {
     bn::core::init();
+    bn::backdrop::set_color(bn::color(25,35,45));
 
     bn::random rng = bn::random();
 
