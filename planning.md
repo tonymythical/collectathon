@@ -15,6 +15,7 @@ I found all the functions to be understandable and sensical. I got to understand
 >>>>>>> 334501e17121c94bbdd10d3707abbfd5888dd318
 
 ## Planning required changes
+Change speed, backdrop color, starting position, game restarts after hitting start, player loops like pacman, make a speed boost function.
 
 Change the speed of the player
 Change background color
