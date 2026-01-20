@@ -41,6 +41,8 @@ static constexpr bn::fixed PLAYER_X = 40;
 int main()
 {
     bn::core::init();
+
+    //Changed backdrop color
     bn::backdrop::set_color(bn::color(15,0,31));
 
     bn::random rng = bn::random();
@@ -93,6 +95,20 @@ int main()
             treasure.set_position(new_x, new_y);
 
             score++;
+        }
+
+        //Player loops through x
+        if (player.x() < MIN_X) {
+            player.set_x(MAX_X);
+        } else if (player.x() > MAX_X) {
+            player.set_x(MIN_X);
+        }
+
+        //Player loops through y
+        if (player.y() < MIN_Y) {
+            player.set_y(MAX_Y);
+        } else if (player.y() > MAX_Y) {
+            player.set_y(MIN_Y);
         }
 
         // Update score display
