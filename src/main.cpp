@@ -50,8 +50,18 @@ int main()
     bn::sprite_ptr player = bn::sprite_items::square.create_sprite(-50, 50);
     bn::sprite_ptr treasure = bn::sprite_items::dot.create_sprite(0, 0);
 
+    
     while (true)
     {
+
+        if (bn::keypad::start_pressed())
+    {
+      score = 0;
+      player.set_position(-50, 50);
+      treasure.set_position(0, 0);
+      score_sprites.clear();
+
+    }
         // Move player with d-pad
         if (bn::keypad::left_held())
         {
@@ -100,6 +110,8 @@ int main()
 
         // Update RNG seed every frame so we don't get the same sequence of positions every time
         rng.update();
+
+        
 
         bn::core::update();
     }
