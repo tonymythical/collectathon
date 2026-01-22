@@ -15,7 +15,12 @@
 #include "common_fixed_8x16_font.h"
 
 // Pixels / Frame player moves at - Anthony
-static constexpr bn::fixed SPEED = 4;
+// Speed boost when A is pressed - Yousif
+static constexpr bn::fixed SPEED = 2;
+static constexpr bn::fixed SPEED_BOOST = 4;
+ int SPEED_BOOST_TIMER = 0;
+bn::fixed speed = SPEED;
+int boost_left = 3;
 
 // Width and height of the the player and treasure bounding boxes
 static constexpr bn::size PLAYER_SIZE = {8, 8};
@@ -56,10 +61,25 @@ int main()
     bn::sprite_ptr player = bn::sprite_items::square.create_sprite(PLAYER_X, PLAYER_Y);
     bn::sprite_ptr treasure = bn::sprite_items::dot.create_sprite(0, 0);
 
-    
+    // Main game loop
     while (true)
     {
-
+        //speed boost when a is pressed, stays for 3 seconds - Yousif
+        if (bn::keypad::a_pressed() && SPEED_BOOST_TIMER == 0 && boost_left > 0)
+        {
+            speed = SPEED_BOOST;
+            SPEED_BOOST_TIMER = 180; // 3 seconds
+            boost_left--;
+        }
+        if (SPEED_BOOST_TIMER > 0)
+        {
+            SPEED_BOOST_TIMER--;
+            if (SPEED_BOOST_TIMER == 0)
+            {
+                speed = SPEED;
+            }
+        }
+        //game resets when start is pressed - Yousif
         if (bn::keypad::start_pressed())
     {
       score = 0;
@@ -71,19 +91,19 @@ int main()
         // Move player with d-pad
         if (bn::keypad::left_held())
         {
-            player.set_x(player.x() - SPEED);
+            player.set_x(player.x() - speed);
         }
         if (bn::keypad::right_held())
         {
-            player.set_x(player.x() + SPEED);
+            player.set_x(player.x() + speed);
         }
         if (bn::keypad::up_held())
         {
-            player.set_y(player.y() - SPEED);
+            player.set_y(player.y() - speed);
         }
         if (bn::keypad::down_held())
         {
-            player.set_y(player.y() + SPEED);
+            player.set_y(player.y() + speed);
         }
 
         // The bounding boxes of the player and treasure, snapped to integer pixels
