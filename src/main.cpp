@@ -14,7 +14,7 @@
 #include "bn_sprite_items_square.h"
 #include "common_fixed_8x16_font.h"
 
-// Pixels / Frame player moves at
+// Pixels / Frame player moves at - Anthony
 static constexpr bn::fixed SPEED = 4;
 
 // Width and height of the the player and treasure bounding boxes
@@ -34,9 +34,15 @@ static constexpr int MAX_SCORE_CHARS = 11;
 static constexpr int SCORE_X = 70;
 static constexpr int SCORE_Y = -70;
 
+// Player location - Anthony
+static constexpr bn::fixed PLAYER_Y = 40;
+static constexpr bn::fixed PLAYER_X = 40;
+
 int main()
 {
     bn::core::init();
+
+    //Changed backdrop color - Yousif
     bn::backdrop::set_color(bn::color(15,0,31));
 
     bn::random rng = bn::random();
@@ -47,7 +53,7 @@ int main()
 
     int score = 0;
 
-    bn::sprite_ptr player = bn::sprite_items::square.create_sprite(-50, 50);
+    bn::sprite_ptr player = bn::sprite_items::square.create_sprite(PLAYER_X, PLAYER_Y);
     bn::sprite_ptr treasure = bn::sprite_items::dot.create_sprite(0, 0);
 
     
@@ -99,6 +105,20 @@ int main()
             treasure.set_position(new_x, new_y);
 
             score++;
+        }
+
+        //Player loops through x - Anthony
+        if (player.x() < MIN_X) {
+            player.set_x(MAX_X);
+        } else if (player.x() > MAX_X) {
+            player.set_x(MIN_X);
+        }
+
+        //Player loops through y - Anthony
+        if (player.y() < MIN_Y) {
+            player.set_y(MAX_Y);
+        } else if (player.y() > MAX_Y) {
+            player.set_y(MIN_Y);
         }
 
         // Update score display
