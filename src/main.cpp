@@ -34,18 +34,16 @@ static constexpr int MIN_X = -bn::display::width() / 2;
 static constexpr int MAX_X = bn::display::width() / 2;
 
 // Number of characters required to show the longest numer possible in an int (-2147483647)
-static constexpr int MAX_SCORE_CHARS = 11;
+static constexpr int MAX_SCORE_CHARS = 24;
+
+static constexpr int MAX_BOOST_CHARS = 24;
 
 // Score location
-static constexpr int SCORE_X = 50;
+static constexpr int SCORE_X = 45;
 static constexpr int SCORE_Y = -70;
 
 // Boost indicator location
-static constexpr int BOOST_X = -120;
-static constexpr int BOOST_Y = -70;
-
-//boost amount location - Yousif
-static constexpr int BOOST_X = -70;
+static constexpr int BOOST_X = -115;
 static constexpr int BOOST_Y = -70;
 
 
