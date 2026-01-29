@@ -1,15 +1,6 @@
 # Collectathon instructions
 An exercise for collaborating with git / GitHub. Please read the directions CAREFULLY!
 
-## Tip on vim:
-
-If you ever get to a point where it shows a commit message for you to edit (something like `Merge branch 'main' of https://github.com/example/repo`), you are in `vim`. To exit:
-1. Hit the escape key
-1. Type `:wq`
-1. Hit enter
-
-This is normal and can happen if you and your partner make diverging changes.
-
 ## Wave 1: Setup project
 1. Choose one partner to be Partner A, one partner to Partner B.
 1. Have ONLY Partner A fork this repository. PARTNER B SHOULD NOT FORK.
@@ -212,7 +203,7 @@ Make sure to be making commits and testing your game along the way!
 BOTH PARTNERS MUST SUBMIT TO CANVAS.
 
 Submit:
-    - Your GitHub repo URL
-    - A link to your deployed game on GitHub pages
-    - A link to your PR
-    - A short description of the improvements you made
+- Your GitHub repo URL
+- A link to your deployed game on GitHub pages
+- A link to your PR
+- A short description of the improvements you made
