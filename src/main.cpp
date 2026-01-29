@@ -22,9 +22,10 @@ static constexpr bn::fixed SPEED_BOOST = 4;
 bn::fixed speed = SPEED;
 int boost_left = 3;
 
-// Width and height of the the player and treasure bounding boxes
+// Width and height of the the player and treasure bounding boxes, and now the follower.
 static constexpr bn::size PLAYER_SIZE = {8, 8};
 static constexpr bn::size TREASURE_SIZE = {8, 8};
+static constexpr bn::size FOLLOWER_SIZE = {8, 8};
 
 // Full bounds of the screen
 static constexpr int MIN_Y = -bn::display::height() / 2;
@@ -33,9 +34,7 @@ static constexpr int MIN_X = -bn::display::width() / 2;
 static constexpr int MAX_X = bn::display::width() / 2;
 
 // Number of characters required to show the longest numer possible in an int (-2147483647)
-static constexpr int MAX_SCORE_CHARS = 24;
-// Boost display
-static constexpr int MAX_BOOST_CHARS = 24;
+static constexpr int MAX_SCORE_CHARS = 11;
 
 // Score location
 static constexpr int SCORE_X = 50;
@@ -45,9 +44,16 @@ static constexpr int SCORE_Y = -70;
 static constexpr int BOOST_X = -120;
 static constexpr int BOOST_Y = -70;
 
-// Player location - Anthony
+//boost amount location - Yousif
+static constexpr int BOOST_X = -70;
+static constexpr int BOOST_Y = -70;
+
+
+// Player location and follower - Anthony
 static constexpr bn::fixed PLAYER_Y = 40;
 static constexpr bn::fixed PLAYER_X = 40;
+static constexpr bn::fixed FOLLOWER_Y = 60;
+static constexpr bn::fixed FOLLOWER_X = 60;
 
 int main()
 {
@@ -64,7 +70,7 @@ int main()
     bn::sprite_text_generator text_generator(common::fixed_8x16_sprite_font);
 
     int score = 0;
-
+    bn::sprite_ptr follower = bn::sprite_items::dot.create_sprite(FOLLOWER_X, FOLLOWER_Y);
     bn::sprite_ptr player = bn::sprite_items::square.create_sprite(PLAYER_X, PLAYER_Y);
     bn::sprite_ptr treasure = bn::sprite_items::dot.create_sprite(0, 0);
 
