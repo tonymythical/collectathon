@@ -26,7 +26,7 @@ int boost_left = 3;
 // Width and height of the the player and treasure bounding boxes, and now the follower.
 static constexpr bn::size PLAYER_SIZE = {8, 8};
 static constexpr bn::size TREASURE_SIZE = {8, 8};
-static constexpr bn::size FOLLOWER_SIZE = {8, 8};
+// static constexpr bn::size FOLLOWER_SIZE = {8, 8};
 
 // Full bounds of the screen
 static constexpr int MIN_Y = -bn::display::height() / 2;
@@ -51,8 +51,8 @@ static constexpr int BOOST_Y = -70;
 // Player location and follower - Anthony
 static constexpr bn::fixed PLAYER_Y = 40;
 static constexpr bn::fixed PLAYER_X = 40;
-static constexpr bn::fixed FOLLOWER_Y = 60;
-static constexpr bn::fixed FOLLOWER_X = 60;
+// static constexpr bn::fixed FOLLOWER_Y = 60;
+// static constexpr bn::fixed FOLLOWER_X = 60;
 
 int main()
 {
@@ -83,7 +83,7 @@ int main()
     bn::sprite_text_generator text_generator(common::fixed_8x16_sprite_font);
 
     int score = 0;
-    bn::sprite_ptr follower = bn::sprite_items::dot.create_sprite(FOLLOWER_X, FOLLOWER_Y);
+    // bn::sprite_ptr follower = bn::sprite_items::dot.create_sprite(FOLLOWER_X, FOLLOWER_Y);
     bn::sprite_ptr player = bn::sprite_items::square.create_sprite(PLAYER_X, PLAYER_Y);
     bn::sprite_ptr treasure = bn::sprite_items::dot.create_sprite(0, 0);
 
@@ -103,7 +103,7 @@ int main()
                 menu_text_generated = true;
             }
 
-            // Fun flicker effect for the treasure - Anthony
+            // Fun flicker effect for the treasure in the menu - Anthony
             treasure.set_position(15 + rng.get_fixed(-1, 1), 15 + rng.get_fixed(-1, 1));
 
             if (bn::keypad::start_pressed())
