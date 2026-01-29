@@ -97,6 +97,9 @@ int main()
                 menu_text_generated = true;
             }
 
+            // Fun flicker effect for the treasure - Anthony
+            treasure.set_position(15 + rng.get_fixed(-1, 1), 15 + rng.get_fixed(-1, 1));
+
             if(bn::keypad::start_pressed())
             {
                 current_state = GameState::GAME;
