@@ -57,6 +57,7 @@ int main()
 {
     bn::core::init();
 
+    //enumerator for different state in game/menu - Anthony
     enum class GameState
     {
         MENU,

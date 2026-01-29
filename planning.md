@@ -27,11 +27,11 @@ give player speed boost when pressing A
 
 
 ## Brainstorming game ideas
-Let's set an icon/indicator for speed boosts just like for score.
-Can we perhaps make a ghosting effect upon speed boost activation?
-Can we add obstacles/boundaries/walls?
-
-Can we add a start menu screen?
+1.Let's set an icon/indicator for speed boosts just like for score.
+2.Can we perhaps make a ghosting effect upon speed boost activation?
+3.Can we add obstacles/boundaries/walls?
+4.Can we add a start menu screen?
 ## Plan for implementing game
-Set an indicator for speed boost amount.
-Add a menu separate from game.
+1.Set an indicator for speed boost amount.
+2.Add a menu separate from game.
+3.Added juttering effects for sprite and speed boost.
