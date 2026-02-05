@@ -12,6 +12,7 @@
 
 #include "bn_sprite_items_dot.h"
 #include "bn_sprite_items_square.h"
+#include "bn_sprite_items_follower.h"
 #include "bn_sprite_items_common_fixed_8x16_font.h"
 
 // Pixels / Frame player moves at - Anthony
@@ -99,7 +100,7 @@ int main()
     bn::vector<bn::sprite_ptr, MAX_LIFES_CHARS> lifes_sprites = {};
 
     int score = 0;
-     bn::sprite_ptr follower = bn::sprite_items::dot.create_sprite(FOLLOWER_X, FOLLOWER_Y);
+     bn::sprite_ptr follower = bn::sprite_items::follower.create_sprite(FOLLOWER_X, FOLLOWER_Y);
      followers.push_back(follower);
     bn::sprite_ptr player = bn::sprite_items::square.create_sprite(PLAYER_X, PLAYER_Y);
     bn::sprite_ptr treasure = bn::sprite_items::dot.create_sprite(0, 0);
@@ -287,7 +288,7 @@ int main()
 
             if (target_followers > followers_spawned + 1)
             {
-                followers.push_back(bn::sprite_items::dot.create_sprite(FOLLOWER_X, FOLLOWER_Y));
+                followers.push_back(bn::sprite_items::follower.create_sprite(FOLLOWER_X, FOLLOWER_Y));
                 followers_spawned++;
             }
             // Update boost display
