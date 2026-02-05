@@ -17,10 +17,10 @@
 
 // Pixels / Frame player moves at - Anthony
 // Speed boost when A is pressed - Yousif
-static constexpr bn::fixed SPEED = 2;
+static constexpr bn::fixed SPEED = 1;
 static constexpr bn::fixed SPEED_BOOST = 4;
 int lifes_left = 3;
-static constexpr bn::fixed follower_speed = 1;
+static constexpr bn::fixed follower_speed = 0.5;
 static constexpr int HURT_COOLDOWN_FRAMES = 300;
 static constexpr int FLICKER_RATE = 4;
 int SPEED_BOOST_TIMER = 0;
