@@ -7,3 +7,5 @@ The simple design of the game is guided by the player who has a desire to grab t
 PLAY GAME: https://tonymythical.github.io/collectathon/
 
 A template to explore GBA games and collaboration with git/GitHub. Please see the instructions in [instructions.md](./instructions.md).
+
+![gameplay demo](grabber.gif)
