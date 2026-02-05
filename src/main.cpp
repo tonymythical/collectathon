@@ -18,8 +18,12 @@
 // Speed boost when A is pressed - Yousif
 static constexpr bn::fixed SPEED = 2;
 static constexpr bn::fixed SPEED_BOOST = 4;
-static constexpr bn:: fixed follower_speed = 1;
+int lifes_left = 3;
+static constexpr bn::fixed follower_speed = 1;
+static constexpr int HURT_COOLDOWN_FRAMES = 300;
+static constexpr int FLICKER_RATE = 4;
 int SPEED_BOOST_TIMER = 0;
+int hurt_cooldown = 0;
 bn::fixed speed = SPEED;
 int boost_left = 3;
 
@@ -41,7 +45,7 @@ static constexpr int MAX_X = bn::display::width() / 2;
 
 // Number of characters required to show the longest numer possible in an int (-2147483647)
 static constexpr int MAX_SCORE_CHARS = 24;
-
+static constexpr int MAX_LIFES_CHARS = 24;
 static constexpr int MAX_BOOST_CHARS = 24;
 
 // Score location
@@ -51,6 +55,10 @@ static constexpr int SCORE_Y = -70;
 // Boost indicator location
 static constexpr int BOOST_X = -65;
 static constexpr int BOOST_Y = -70;
+
+//lifes indicator location
+static constexpr int LIFES_X = -70;
+static constexpr int LIFES_Y = 70;
 
 
 // Player location and follower - Anthony
@@ -85,6 +93,10 @@ int main()
     // amount of boosts left display
     bn::string<MAX_SCORE_CHARS> boost_string = {};
     bn::vector<bn::sprite_ptr, MAX_BOOST_CHARS> boost_sprites = {};
+
+    //amount of lifes left display
+    bn::string<MAX_LIFES_CHARS> lifes_string = {};
+    bn::vector<bn::sprite_ptr, MAX_LIFES_CHARS> lifes_sprites = {};
 
     int score = 0;
      bn::sprite_ptr follower = bn::sprite_items::dot.create_sprite(FOLLOWER_X, FOLLOWER_Y);
@@ -149,6 +161,19 @@ int main()
                 score_sprites.clear();
                 boost_left = 3;
             }
+
+            //if player is hurt, colldown activates where he cant take damage
+            if (hurt_cooldown > 0){
+                --hurt_cooldown; 
+            }
+            //player flickers if damage taken
+            if (hurt_cooldown > 0) {
+                bool show = (hurt_cooldown / FLICKER_RATE) % 2 == 0;
+                player.set_visible(show);
+            }
+            else {
+                player.set_visible(true);
+            }
             
             
 
@@ -190,7 +215,7 @@ int main()
                                                
 
 
-            //Move follower towards player                                  
+            //Move follower towards player   and subtracts life when follower intersects player                              
             if (!follower_rect.intersects(player_rect))
             
                 if (follower_rect.left() < player_rect.left()){
@@ -207,6 +232,15 @@ int main()
                     f.set_y(f.y() - follower_speed);
 
                 }
+
+                //if follower touches player, player lifes decrease by 1
+            if (hurt_cooldown == 0 &&player_rect.intersects(follower_rect) && lifes_left > 0)
+            {
+               --lifes_left;
+                hurt_cooldown = HURT_COOLDOWN_FRAMES;
+               break;
+
+            }
             }
 
             // If the bounding boxes overlap, set the treasure to a new location an increase score
@@ -219,6 +253,7 @@ int main()
 
                 score++;
             }
+            
 
             // Player loops through x - Anthony
             if (player.x() < MIN_X)
@@ -262,6 +297,15 @@ int main()
             text_generator.generate(BOOST_X, BOOST_Y,
                                     boost_string,
                                     boost_sprites);
+
+            //update players life display
+            lifes_string.clear();
+            lifes_string = "LIVES LEFT: " + bn::to_string<MAX_LIFES_CHARS>(lifes_left);
+            lifes_sprites.clear();
+            text_generator.generate(LIFES_X, LIFES_Y,
+                                    lifes_string,
+                                    lifes_sprites);
+            
         }
 
         // Update RNG seed every frame so we don't get the same sequence of positions every time
