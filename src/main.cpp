@@ -63,10 +63,10 @@ static constexpr int LIFES_Y = 70;
 
 
 // Player location and follower - Anthony
-static constexpr bn::fixed PLAYER_Y = 40;
-static constexpr bn::fixed PLAYER_X = 40;
-static constexpr bn::fixed FOLLOWER_Y = 60;
-static constexpr bn::fixed FOLLOWER_X = 60;
+static constexpr bn::fixed PLAYER_Y = 5;
+static constexpr bn::fixed PLAYER_X = -40;
+static constexpr bn::fixed FOLLOWER_Y = -50;
+static constexpr bn::fixed FOLLOWER_X = 40;
 
 int main()
 {
